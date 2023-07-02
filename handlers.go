@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"strconv"
 )
@@ -19,7 +19,7 @@ func InitHandlers() *http.ServeMux {
 		if r.Method == "POST" {
 			i++
 		} else if r.Method == "PATCH" {
-			body_bynary, _ := ioutil.ReadAll(r.Body)
+			body_bynary, _ := io.ReadAll(r.Body)
 			body := string(body_bynary)
 			fmt.Println(body)
 			val, err := strconv.Atoi(body)
